@@ -1,0 +1,129 @@
+import math
+
+class Triangulo:
+    def __init__(self, lado_a, lado_b, angulo_grados):
+        self.lado_a = lado_a
+        self.lado_b = lado_b
+        self.angulo_grados = angulo_grados
+
+    def calcular_area(self):
+        angulo_radianes = math.radians(self.angulo_grados)
+        area = 0.5 * self.lado_a * self.lado_b * math.sin(angulo_radianes)
+        return area
+
+    def determinar_tipo(self):
+        if self.lado_a == self.lado_b and self.angulo_grados == 60:
+            return "Equilátero"
+        elif self.lado_a == self.lado_b or self.angulo_grados == 90:
+            return "Isósceles"
+        else:
+            return "Escaleno"
+
+    def calcular_tercer_lado(self):
+        angulo_radianes = math.radians(self.angulo_grados)
+        lado_c = math.sqrt(self.lado_a**2 + self.lado_b**2 - 2 * self.lado_a * self.lado_b * math.cos(angulo_radianes))
+        return lado_c
+
+
+lado_a = float(input("Ingrese el valor del lado A (en metros): "))
+lado_b = float(input("Ingrese el valor del lado B (en metros): "))
+angulo_grados = float(input("Ingrese el ángulo (en grados) entre los lados A y B: "))
+
+triangulo = Triangulo(lado_a, lado_b, angulo_grados)
+
+area = triangulo.calcular_area()
+tipo = triangulo.determinar_tipo()
+lado_c = triangulo.calcular_tercer_lado()
+
+print(f"El área del triángulo es {area} metros cuadrados.")
+print(f"El triángulo es de tipo {tipo}.")
+print(f"La medida del tercer lado es {lado_c} metros.")
+
+Ejercicio 2
+class Interes:
+    def __init__(self, capital, tasa, años):
+        self.capital = capital
+        self.tasa = tasa
+        self.años = años
+
+    def calcular_interes(self):
+        pass
+
+class InteresSimple(Interes):
+    def calcular_interes(self):
+        interes = self.capital * (self.tasa / 100) * self.años
+        return self.capital + interes
+
+class InteresCompuesto(Interes):
+    def calcular_interes(self):
+        interes = self.capital * (1 + self.tasa / 100)**self.años - self.capital
+        return self.capital + interes
+
+def main():
+    capital = float(input("Ingrese la cantidad de dinero: "))
+    tasa = float(input("Ingrese la tasa de interés (en porcentaje): "))
+    años = int(input("Ingrese el número de años: "))
+
+    interes_simple = InteresSimple(capital, tasa, años)
+    interes_compuesto = InteresCompuesto(capital, tasa, años)
+
+    capital_simple = interes_simple.calcular_interes()
+    capital_compuesto = interes_compuesto.calcular_interes()
+
+    print(f"Después de {años} años, con interés simple, tendrás ${capital_simple:.2f}")
+    print(f"Después de {años} años, con interés compuesto, tendrás ${capital_compuesto:.2f}")
+
+if __name__ == "__main__":
+    main()
+
+Ejercicio 3
+import matplotlib.pyplot as plt
+
+def ingresar_calificaciones():
+    calificaciones = []
+    for i in range(4):
+        calificacion = int(input(f"Ingrese el número de personas con calificación {i + 1}: "))
+        calificaciones.append(calificacion)
+    return calificaciones
+
+def grafico_de_barras(calificaciones):
+    etiquetas = ["Calificación 1", "Calificación 2", "Calificación 3", "Calificación 4"]
+    plt.bar(etiquetas, calificaciones)
+    plt.xlabel("Calificaciones")
+    plt.ylabel("Número de personas")
+    plt.title("Distribución de Calificaciones")
+    plt.show()
+
+def main():
+    calificaciones = ingresar_calificaciones()
+    grafico_de_barras(calificaciones)
+
+if __name__ == "__main__":
+    main()
+
+Menu 
+import subprocess
+
+while True:
+
+    print("Selecciona una opción:")
+    print("1. Ejecutar Programa 1")
+    print("2. Ejecutar Programa 2")
+    print("3. Ejecutar Programa 3")
+    print("Para salir del programa, escribe EXIT ")
+
+    # Obtener la selección del usuario
+    opcion = input("Ingresa el número de la opción que deseas: ")
+
+    # Procesar la selección del usuario
+    if opcion == "1":
+        subprocess.run(["python", "Examen ejercicio 1.py"])
+    elif opcion == "2":
+        subprocess.run(["python", "Examen ejercicio 2.py"])
+    elif opcion == "3":
+        subprocess.run(["python", "Examen ejercicio 3.py"])
+    elif opcion == "EXIT":
+        print("Saliendo del programa.")
+        break
+    else:
+        print("Opción no válida. Por favor, selecciona una opción válida.")
