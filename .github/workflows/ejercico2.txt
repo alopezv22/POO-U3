@@ -1,0 +1,46 @@
+
+class Capital:
+    def __init__(self, dinero, interes, años):
+        self.dinero = dinero
+        self.interes = interes
+        self.años = años
+
+  
+    def calcular_capital(self):
+        pass
+
+
+
+class InteresSimple(Capital):
+    def calcular_capital(self):
+        capital = self.dinero + (self.dinero * self.interes * self.años)
+        return capital
+
+
+
+class InteresCompuesto(Capital):
+    def calcular_capital(self):
+        capital = self.dinero * (1 + self.interes) ** self.años
+        return capital
+
+
+
+def main():
+    # Pedir al usuario los datos
+    dinero = float(input("Ingrese la cantidad de dinero: "))
+    interes = float(input("Ingrese la tasa de interés (en decimal): "))
+    años = int(input("Ingrese el número de años: "))
+
+   
+    interes_simple = InteresSimple(dinero, interes, años)
+    interes_compuesto = InteresCompuesto(dinero, interes, años)
+
+   
+    capital_simple = interes_simple.calcular_capital()
+    capital_compuesto = interes_compuesto.calcular_capital()
+
+    print("Con interés simple, el capital será:", capital_simple)
+    print("Con interés compuesto, el capital será:", capital_compuesto)
+
+
+main()

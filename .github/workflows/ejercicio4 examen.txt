@@ -1,0 +1,43 @@
+Examen/
+   examen_main.py
+   ejercicio1/
+      __init__.py
+      ejercicio1.py
+   ejercicio2/
+      __init__.py
+      ejercicio2.py
+   ejercicio3/
+      __init__.py
+      ejercicio3.py
+
+      import ejercicio1.ejercicio1
+import ejercicio2.ejercicio2
+import ejercicio3.ejercicio3
+
+def show_menu():
+    print("=== Menú Principal ===")
+    print("1. ejercicio 1")
+    print("2. ejercicio 2")
+    print("3. ejercicio 3")
+    print("EXIT para salir")
+
+def main():
+    show_menu()
+    while True:
+        option = input("Ingrese el número del programa a ejecutar: ")
+        if option == "1":
+            print("Bienvenido al ejercicio 1")
+            ejercicio1.ejercicio1.ejercicio1_main()
+        elif option == "2":
+            print("Bienvenido al ejercicio 2")
+            ejercicio2.ejercicio2.ejercicio2_main()
+        elif option == "3":
+            print("Bienvenido al ejercicio 3")
+            ejercicio3.ejercicio3.ejercicio3_main()
+        elif option.upper() == "EXIT":
+            break
+        else:
+            print("Opción inválida, por favor intente de nuevo.")
+
+if __name__ == "__main__":
+    main()
