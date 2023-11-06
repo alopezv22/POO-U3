@@ -1,0 +1,24 @@
+import matplotlib.pyplot as plt
+
+
+sobresaliente = int(input("Número de personas con calificación Sobresaliente: "))
+notable = int(input("Número de personas con calificación Notable: "))
+adecuado = int(input("Número de personas con calificación Adecuado: "))
+insuficiente = int(input("Número de personas con calificación Insuficiente: "))
+
+
+total = sobresaliente + notable + adecuado + insuficiente
+porcentaje_sobresaliente = (sobresaliente / total) * 100
+porcentaje_notable = (notable / total) * 100
+porcentaje_adecuado = (adecuado / total) * 100
+porcentaje_insuficiente = (insuficiente / total) * 100
+
+
+calificaciones = ['Sobresaliente', 'Notable', 'Adecuado', 'Insuficiente']
+porcentajes = [porcentaje_sobresaliente, porcentaje_notable, porcentaje_adecuado, porcentaje_insuficiente]
+
+plt.bar(calificaciones, porcentajes)
+plt.xlabel('Calificaciones')
+plt.ylabel('Porcentaje')
+plt.title('Gráfico de Barras - Calificaciones')
+plt.show()
