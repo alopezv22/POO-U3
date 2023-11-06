@@ -1,0 +1,31 @@
+class Interes:
+    def __init__(self, capital, tasa, años):
+        self.capital = capital
+        self.tasa = tasa
+        self.años = años
+    
+    def calcular_monto(self):
+        pass
+
+class InteresSimple(Interes):
+    def calcular_monto(self):
+        monto = self.capital * (1 + self.tasa * self.años)
+        return monto
+
+class InteresCompuesto(Interes):
+    def calcular_monto(self):
+        monto = self.capital * (1 + self.tasa)**self.años
+        return monto
+
+capital = float(input("Ingrese el capital inicial: "))
+tasa = float(input("Ingrese la tasa de interés (en decimales): "))
+años = int(input("Ingrese el número de años: "))
+
+interes_simple = InteresSimple(capital, tasa, años)
+interes_compuesto = InteresCompuesto(capital, tasa, años)
+
+monto_simple = interes_simple.calcular_monto()
+monto_compuesto = interes_compuesto.calcular_monto()
+
+print(f"Interés Simple: El monto final es {monto_simple:.2f}")
+print(f"Interés Compuesto: El monto final es {monto_compuesto:.2f}")
